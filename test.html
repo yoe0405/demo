@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+    /*------------监听微信返回弹出alert--------------*/
+    $(function(){
+      function pushHistory() {
+        var state = {
+          title: "title",
+          url: "#"
+        };
+        window.history.pushState(state, "title", "#");
+      }
+      pushHistory();
+
+      var bool=false;
+      setTimeout(function(){
+        bool=true;
+      },1500);
+
+      window.addEventListener("popstate", function(e) {
+        if(bool){
+          alert("我监听到了浏览器的返回按钮事件啦");//根据自己的需求实现自己的功能
+        }
+        pushHistory();
+      }, false);
+    });
+
+    /*------------H5和客户端交互--------------*/
+    var returnNum = getBlatFrom();  // 判断1为Android，2为ios
+		/*------------跳转登陆+请求返回数据--------------*/
+		if(returnNum == 1){  // android机型
+		    $(".footer").click(function(){
+		        alaAndroid.appLogin();  // h5调用Android原生登陆
+		    });
+		}else{  // ios机型
+		    $(".footer").click(function(){
+		        alaIos.appLogin();  // h5调用ios原生登陆
+		    });
+		}
+
+		// 登陆后回调客户端loginSuccess操作领劵
+		function loginSuccess(obj) {
+
+	    var obj = JSON.stringify(obj); // json对象转换成json字符串
+	    var obj = JSON.parse(obj);  // 将json字符串转换成json对象
+
+	    var userName = obj.userName;
+	    var mobile = obj.mobile;
+
+	    $.ajax({
+        url: 'pickBoluomeCoupon',
+        data:{'sceneId':'387','userName':userName},
+        type: 'post',
+        success:function (data) {
+          data=eval('(' + data + ')');
+          if(data.success){
+              requestMsg("领劵成功")
+          }else{
+            if(data.url){
+               location.href=data.url;
+            }else{
+              alaIos.alaRequestMsg(data.msg);
+            }
+          }
+        }
+	    });
+		}
+
+
+		/*------------H5和客户端交互调用客户端的分享--------------*/
+		// 获取网站的域名
+		function domainName(){
+			var protocol = window.location.protocol;
+			var host = window.location.host;
+			var domainName = protocol+'//'+host;
+			return domainName;
+		}
+
+		// 获取网站的域名
+		let domainName = domainName();
+		// app调用web的方法
+		function alaShareData(){
+	    // 分享内容
+	    let dataObj = {
+	      'appLogin': 'N', // 是否需要登录，Y需要，N不需要
+	      'type': 'share', // 此页面的类型
+	      'shareAppTitle': 'OPPO R11预约返利300元',  // 分享的title
+	      'shareAppContent': 'OPPO R11全明星首发，疯陪到底！0元预约享12期分期免息，更有超级返利300元！有，且只在51返呗 GO>>>',  // 分享的内容
+	      'shareAppImage': 'https://fs.51fanbei.com/h5/common/icon/midyearCorner.png',  // 分享右边小图
+	      'shareAppUrl': domainName+'/fanbei-web/activity/oppoR11?oppoR11Share=oppoR11Share',  // 分享后的链接
+	      'isSubmit': 'N', // 是否需要向后台提交数据，Y需要，N不需要
+	      'sharePage': 'oppoR11' // 分享的页面
+	    };
+	    let dataStr = JSON.stringify(dataObj);  // json数组转换成json对象
+	    return dataStr;
+		};
+
+		// 判断分享的页面里面是否有这个字段，显示相对应的页面
+		let oppoR11Share = getUrl("oppoR11Share");
+		if (oppoR11Share == "oppoR11Share") {
+		  $(".goRegister").removeClass("hide");
+		  $(".banner").addClass("hide");
+
+		  $(".mobileList").addClass("hide");
+		  $(".mobileListImg").removeClass("hide");
+		}
+
+		/*------------H5页面获取设备的uuid--------------*/
+		function guid() {
+		  function S4() {
+		    return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+		  }
+		  return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+		}
+
+		let data = guid();
+		// alert(data);
+
+
+
+
+	</script>
+</body>
+</html>
