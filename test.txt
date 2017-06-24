@@ -1,0 +1,31 @@
+//var url = "https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.1.YbuWvi&id=552277681637&skuId=3382955645849&areaId=330100&user_id=3165788212&cat_id=2&is_b=1&rn=020d728da7a3eb34b3c8613c1ade59cd";
+//var privateGoodsId = url.getUrl(id);
+//alert(privateGoodsId);
+
+// function getUrl1(para){
+//   var url = "https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.1.YbuWvi&id=552277681637&skuId=3382955645849&areaId=330100&user_id=3165788212&cat_id=2&is_b=1&rn=020d728da7a3eb34b3c8613c1ade59cd";
+//   var paraArr = url.split("&");
+//   for(var i = 0;i < paraArr.length;i++){
+//       if(para == paraArr[i].split('=')[0]){
+//           return paraArr[i].split('=')[1];
+//       }
+//   }
+//   return '';
+// }
+// privateGoodsId = getUrl1("id");
+// 
+// 
+// 
+
+
+
+<form name="punchout_form" method="post" action="https://openapi.alipaydev.com/gateway.do?sign=bIzTde%2FFjGquVJ1vdPHGzOa%2FbPIQvoEPXKW5K7cEzLzgp3I4klaR4IeBCeH5dAClJP9GyO5xio67uq8wuoi4l6ph%2BEPt8L6RHqTMnRkySAvsL9%2FbIpYZRkis6AjgZ51M2Nx2V6DpIOKDYNDj%2F80PCFgGEAODLczvmq%2F7VLkAscebVzDrzLL3mCd8wG4WmQDZ5LSo%2Bjebnz8JaaHLbd%2FFEYGF%2F%2BhTKmxBa9Nm99vTZQTRwfbAYOeZds1Fn7Z%2FjDTXFYGYp%2BN4H6cbSQTVkpzKc9OC6WP2tb0OLZaZ0WsEW75GQJoI%2BfPPMKQL%2B5nJGMal6Vb2D3JVVEnsG0fqe3ZlJg%3D%3D&timestamp=2017-06-22+14%3A44%3A53&sign_type=RSA2&notify_url=http%3A%2F%2Fpntg.hzclt.cn&charset=UTF-8&app_id=2016080600181096&method=alipay.trade.wap.pay&return_url=http%3A%2F%2Fpntg.hzclt.cn%2ForderStatus.html&version=1.0&alipay_sdk=alipay-sdk-java-dynamicVersionNo&format=json">
+<input type="hidden" name="biz_content" value="{    &quot;out_trade_no&quot;:&quot;1793&quot;,    &quot;total_amount&quot;:&quot;0.01&quot;,    &quot;subject&quot;:&quot;上门洗车&quot;,    &quot;timeout_express&quot;:&quot;1c&quot;,    &quot;product_code&quot;:&quot;QUICK_WAP_PAY&quot;  }">
+<input type="submit" value="立即支付" style="display:none">
+</form>
+<script>document.forms[0].submit();</script>
+
+
+<!-- <li @click="oppoR11List()" :class="show? 'item2':'item'"></li>
+  <li @click="oppoR11List()" :class="show? 'item3':'item'"></li>
+  <li @click="oppoR11List()" :class="show? 'item4':'item'"></li> -->
