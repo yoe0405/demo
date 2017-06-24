@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Component-1 定义全局/局部组件</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+	<h1>Component-1 定义全局/局部组件</h1>
+	<hr>
+	<div id="app">
+		<jason></jason>
+		<yoe></yoe>
+	</div>
+	<div id="demo1">
+		<jason></jason>
+	</div>
+	<script type="text/javascript">
+
+		// 组件定义的是标签
+		// 指令定义的是标签一个属性
+
+		// 全局的组件是在构造器外面定义
+		// 局部的组件是在构造器里面定义
+		Vue.component('jason',{
+			template: `<div style="color: green;">我是全局的jason组件</div>`
+		})
+
+		var app = new Vue({
+			el: '#app',
+			components: {
+				"yoe": {
+					template: `<div style="color: red;">我是局部的yoe组件</div>`
+				}
+			}
+		});
+
+		var demo1 = new Vue({
+			el: '#demo1'
+		});
+	</script>
+</body>
+</html>

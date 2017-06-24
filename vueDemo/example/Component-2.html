@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Component-2 定义组件的属性</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+	<h1>Component-2 定义组件的属性</h1>
+	<hr>
+	<div id="app">
+		<yoe v-bind:here="message"></yoe>
+	</div>
+
+	<script type="text/javascript">
+
+		var app = new Vue({
+			el: '#app',
+			data: {
+				message: 'hangzhou'
+			},
+			components: {
+				"yoe": {
+					template: `<div style="color: red;">yoe from {{ here }}</div>`,
+					props: ['here']
+				}
+			}
+		});
+
+	</script>
+</body>
+</html>
