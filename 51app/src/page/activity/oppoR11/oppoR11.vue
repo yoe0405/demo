@@ -20,7 +20,6 @@
     <!-- 手机列表 -->
     <ul class="goodsMobileList clearfix">
       <li v-for="item in goodsMobileListMap.goodsList" @click="goGoodsDetail(item.goodsId)">
-        <p>{{item.goodsId}}</p>
         <img :src="item.goodsIcon">
         <div class="mobileListContent">
           <p><i></i>{{item.goodsName}}</p>
@@ -88,7 +87,9 @@
       },
       goGoodsDetail(id){
         let _this=this;
-        window.location.href=_this.notifyUrl+'&params={"privateGoodsId":"'+id+'"}'
+
+        // window.location.href=_this.notifyUrl+'&params={"privateGoodsId":"'+id+'"}'
+        window.location.href='/fanbei-web/opennative?name=GOODS_DETAIL_INFO&params={"privateGoodsId":"'+id+'"}'
       }
     }
   }
