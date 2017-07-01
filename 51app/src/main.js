@@ -6,14 +6,13 @@ import router from './router'
 
 import './common/css/reset.less'  // 重置css
 import rem from './common/js/rem'  // rem
-// import axios from 'axios'
+import axios from 'axios'
 
 
 Vue.use(rem)
 Vue.use(require('vue-wechat-title'))  // 设置页面title
-// Vue.prototype.$http= axios
+Vue.prototype.$http= axios
 
-// axios.defaults.withCredentials=true
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
