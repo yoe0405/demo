@@ -11,7 +11,7 @@ import axios from 'axios'
 
 Vue.use(rem)
 Vue.use(require('vue-wechat-title'))  // 设置页面title
-Vue.prototype.$http= axios
+Vue.prototype.$axios= axios
 
 Vue.config.productionTip = false
 
